@@ -1,120 +1,130 @@
-html {
-    box-sizing: border-box;
-    height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tektur', cursive;
+}
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
   }
   
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  :root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
   }
+  
   
   body {
-    align-items: center;
+    min-height: 100vh;
+    background: #212534;
     display: flex;
-    font-family: 'Nova Flat';
-    height: 100vh;
     justify-content: center;
-    background-image: url("image.jpg");
-    background-size: cover;
-    background-position: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
   }
   
-  .wrapper {
-    backdrop-filter: blur(5.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(35, 35, 35, 35, 0.1);
-    color: #232323;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    background: rgba(255, 255, 255, 0.30);
-    border: 1px solid rgba(255, 255, 255, 0.34);
-    width: 90%;
-    max-width: 400px;
-    padding: 20px 35px;
+  
+  .card {
+    background: #191c29e9;
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    padding-top: 1rem;
+    position: relative;
+    border-radius: 9px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
-  .screen {
-    backdrop-filter: blur(5.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.01);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(35, 35, 35, 35, 0.1);
-    color: #232323;
-    font-size: 6vw;
-    overflow: auto;
-    padding: 20px;
-    text-align: right;
+  .card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 12px;
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      position: absolute;
+      z-index: -1;
+      top: -1%;
+      left: -2%;
+      animation: spin 5s linear infinite;
+  }
+  
+  .card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
     width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(
+      var(--rotate)
+      , #5ddcff, #3c67e3 43%, #4e00c2);
+      opacity: 1;
+    transition: opacity .5s;
+    animation: spin 5s linear infinite;
+  }
+  input{
+    width: 90%;
+    border: none;
+    padding: 18px;
+    margin-bottom: 12px;
+    background: transparent;
+    box-shadow: 0px 3px 15px rgbs(84, 84, 84, 0.5);
+    border-radius: 10px;
+    font-size: 40px;
+    text-align: right;
+    cursor: pointer;
+    color: aliceblue;
+  }
+  input::placeholder{
+    color: aliceblue;
+  }
+
+  button{
+    border: none;
+    width: 50px;
+    height: 50px;
+    margin: 8px;
+    border-radius: 50%;
+    background: transparent;
+    color: aliceblue;
+    font-size: 20px;
+    box-shadow: -7px -7px 15px rgba(111, 215, 244, 0.1);
+  }
+  .equalBtn{
+    background-color: rgb(0, 136, 255);
+  }
+  .operator{
+    color:rgb(44, 253, 218)
   }
   
-  .calc-button-row {
-    display: flex;
-    justify-content: space-between;
-    margin: 5% 0;
-  }
-  
-  .calc-button {
-    backdrop-filter: blur(5.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    background: rgba(255, 255, 255, 0.549);
-    border: 1px solid rgba(255, 255, 255, 0.01);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(35, 35, 35, 35, 0.1);
-    color: #232323;
-    flex-basis: 20%;
-    font-family: inherit;
-    font-size: 4vw;
-    height: 10vw;
-  }
-  
-  .calc-button:last-child {
-    backdrop-filter: blur(5.5px);
-    -webkit-backdrop-filter: blur(5.5px);
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.01);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(35, 35, 35, 35, 0.1);
-    color: #ffffff;
-    background: #000000a9;
-  }
-  
-  .calc-button:last-child:hover {
-    background-color: inherit;
-    color: inherit;
-  }
-  
-  .calc-button:hover {
-    background-color: inherit;
-  }
-  
-  .calc-button:active {
-    background-color: #ffef78;
-  }
-  
-  .double {
-    flex-basis: 47%;
-  }
-  
-  .triple {
-    flex-basis: 73%;
-  }
-  
-  @media (min-width: 768px) {
-    .wrapper {
-      width: 400px;
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
     }
-  
-    .screen {
-      font-size: 35px;
+    100% {
+      --rotate: 360deg;
     }
+  }
   
-    .calc-button {
-      font-size: 24px;
-      height: 65px;
-    }
+  a {
+    color: #212534;
+    text-decoration: none;
+    font-family: 'Tektur', cursive;
+    font-weight: bold;
+    margin-top: 2rem;
   }
